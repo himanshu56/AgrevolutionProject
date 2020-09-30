@@ -4,12 +4,23 @@
   <h1>Home</h1>
   <p>Welcome</p>
   <h2></h2>
-  <<p>Products</p>
+  <p>Products</p>
   <ul>
-    <li><strong>Products:</strong> {{ num_books }}</li>
-    <li><strong>Product Variants:</strong> {{ num_instances }}</li>
-    <li><strong>Availibility:</strong> {{ num_instances_available }}</li>
-    <li><strong>Price</strong> {{ num_authors }}</li>
+    <li><strong>Products:</strong></li>
+    {% if products %}
+      <ul>
+        {% for product in products %}
+        <li>
+          <a>{{ product.product.name }}  {{ product.color }}  {{ product.texture }} {{ product.size }} {{ product.price }}</a>
+          {% if product.stock %}
+          <a href="#">Buy Now</a>
+          {% endif %}
+          <a></a>
+        </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>There are no products.</p>
+    {% endif %}
   </ul> 
-  <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p> >
 {% endblock %}

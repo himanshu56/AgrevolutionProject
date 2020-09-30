@@ -14,6 +14,7 @@ def index(request):
     num_varients_available = 1 #ProductVariant.objects.filter(status__exact='a').count()
     
     context = {
+        'products': ProductVariant.objects.all(),
         'num_products': num_products,
         'num_varients_available': num_varients_available,
     }
