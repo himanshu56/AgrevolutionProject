@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Home</h1>
+  <p>Welcome</p>
+  <h2></h2>
+  <<p>Products</p>
+  <ul>
+    <li><strong>Products:</strong> {{ num_books }}</li>
+    <li><strong>Product Variants:</strong> {{ num_instances }}</li>
+    <li><strong>Availibility:</strong> {{ num_instances_available }}</li>
+    <li><strong>Price</strong> {{ num_authors }}</li>
+  </ul> 
+  <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p> >
+{% endblock %}
