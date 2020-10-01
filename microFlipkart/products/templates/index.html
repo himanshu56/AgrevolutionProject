@@ -3,24 +3,13 @@
 {% block content %}
   <h1>Home</h1>
   <p>Welcome</p>
-  <h2></h2>
-  <p>Products</p>
+  <h2>Dynamic content</h2>
+  <p>The library has the following record counts:</p>
   <ul>
-    <li><strong>Products:</strong></li>
-    {% if products %}
-      <ul>
-        {% for product in products %}
-        <li>
-          <a>{{ product.product.name }}  {{ product.color }}  {{ product.texture }} {{ product.size }} {{ product.price }}</a>
-          {% if product.stock %}
-          <a href="#">Buy Now</a>
-          {% endif %}
-          <a></a>
-        </li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p>There are no products.</p>
-    {% endif %}
+    <li><strong>Books:</strong> {{ num_books }}</li>
+    <li><strong>Copies:</strong> {{ num_instances }}</li>
+    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
+    <li><strong>Authors:</strong> {{ num_authors }}</li>
   </ul> 
+  <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
 {% endblock %}

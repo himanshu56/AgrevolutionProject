@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sales DashBoard</title>
+</head>
+<body>
+<center>
+    <h1> Sales Dashboard</h1>
+    <h2>Pending Approval Orders</h2>
+
+{% if error %}
+
+    <h3 >ERROR: {{ error }}</h3>
+{% endif %}
+    <table>
+        <th>
+            <tr>
+                <td>Order ID</td>
+                <td>Product</td>
+                <td>Quantity</td>
+                <td>Action</td>
+            </tr>
+        </th>
+        {%   for i in orders %}
+             {% if i.status == 'PLACED' %}
+        <tr>
+        <td>{{ i.orderid }}</td>
+        <td>{{ i.product }}</td>
+        <td>{{ i.variant }}</td>
+        <td>{{ i.status }}</td>
+
+        <td>
+
+                        <form method="post">
+                            {% csrf_token %}
+                        <select name="status" id="status">
+                            <option value="Accepted">Accepted</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="Cancelled">Cancelled</option>
+
+                        </select>
+                            <input type="hidden" value="{{ i.orderid }}" name="vid" id="vid">
+            <input type="submit" value="Update">
+                         </form>
+
+       </td>
+        </tr>
+            {% endif %}
+    {% endfor %}
+    </table>
+
+<hr>
+<h2>Approved Orders</h2>
+    <table>
+        <th>
+            <tr>
+                <td>Order ID</td>
+                <td>Product</td>
+                <td>Quantity</td>
+                <td>Action</td>
+            </tr>
+        </th>
+        {%   for i in orders %}
+        <tr>
+        {% if i.status != "PLACED" %}
+        <td>{{ i.orderid }}</td>
+        <td>{{ i.product }}</td>
+        <td>{{ i.variant }}</td>
+        <td>{{ i.status }}</td>
+        {% endif %}
+
+        </tr>
+    {% endfor %}
+    </table>
+<a href="/cust/logout/" >Logout</a>
+</center>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Details</title>
+</head>
+<body>
+<center>
+    <h1> Congrats your order is placed. </h1>
+    <h2>{{ order_number }}</h2>
+
+    <hr>
+    <h3>OLD ORDERS</h3>
+    <table>
+        <th>
+            <tr>
+                <td>Order ID</td>
+                <td>Price</td>
+                <td>Product</td>
+                <td>Variant</td>
+            </tr>
+        </th>
+
+        {% for i in past %}
+            <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.price }}</td>
+            <td>{{ i.product }}</td>
+            <td>{{ i.vari }}</td>
+            </tr>
+
+        {% endfor %}
+
+    </table>
+<a href="/cust/logout/" >Logout</a>
+</center>
+</body>
+</html>

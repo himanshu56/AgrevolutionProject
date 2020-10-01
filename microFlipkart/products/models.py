@@ -25,7 +25,6 @@ class ProductVariant(models.Model):
     color = models.CharField(max_length=20, blank=True)
     size = models.CharField(max_length=20, blank=True)
     texture = models.CharField(max_length=20, blank=True)
-    stock = models.IntegerField(null=True, blank=False)
     price = models.DecimalField(max_digits=25, decimal_places=2)
 
     list_display = ('color', 'size', 'texture', 'price')

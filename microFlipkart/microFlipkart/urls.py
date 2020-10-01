@@ -27,15 +27,8 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    path('products/', include('products.urls')),
+    path('cust/', include('ecommapp.urls')),
 ]
 
-urlpatterns += [
-    path('', RedirectView.as_view(url='products/', permanent=True)),
-]
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-urlpatterns += [
-    path('accounts/', include('django.contrib.auth.urls')),
-]

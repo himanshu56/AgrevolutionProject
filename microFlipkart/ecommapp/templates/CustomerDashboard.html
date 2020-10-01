@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer DashBoard</title>
+</head>
+<body>
+{% if error %}
+
+    <h3 >ERROR: {{ error }}</h3>
+{% endif %}
+<table>
+    <th><tr>
+        <td>Item Name</td>
+        <td>Varient Name</td>
+        <td>Varient Options</td>
+        <td>Avilable Quantity</td>
+        <td>Price</td>
+        <td>Actions</td></tr>
+
+    </th>
+
+    {%   for i in products %}
+        <tr>
+        <td>{{ i.name }}</td>
+        <td>{{ i.variantname }}</td>
+        <td>{{ i.vvalue }}</td>
+        <td>{{ i.vquantity }}</td>
+        <td>{{ i.vprice }}</td>
+        <td>
+            {% if i.vquantity > 0 %}
+            <form method="post" >
+            <input type="hidden" name="vid" value="{{ i.vid }}" id="vid">
+            {% csrf_token %}
+            <input type="number" max="{{ i.vquantity}}" placeholder="Enter Quanity" name="quant" id="quant">
+            <input type="submit" value="BUY"> </form>
+                {% else %}
+            <form method="post">
+            <input type="hidden" name="vid" value="{{ i.vid }}" id="vid">
+            {% csrf_token %}
+            <input type="number" disabled placeholder="OUT OF STOCK" name="quant" id="quant">
+            <input type="submit"  disabled value="BUY"> </form>
+            {% endif %}
+       </td>
+        </tr>
+    {% endfor %}
+
+
+
+</table>
+<a href="/cust/logout/" >Logout</a>
+
+</body>
+</html>

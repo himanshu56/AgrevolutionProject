@@ -9,13 +9,15 @@ def index(request):
 
     # Generate counts of some of the main objects
     num_products = Product.objects.all().count()
+    num_varients = ProductVariant.objects.all().count()
     
     # Available books (status = 'a')
-    num_varients_available = 1 #ProductVariant.objects.filter(status__exact='a').count()
-    
+    #num_varients_available = ProductVariant.objects.filter(status__exact='a').count()
+    num_varients_available = 1#/ProductVariant.objects.filter(status__exact='a').count()
+
     context = {
-        'products': ProductVariant.objects.all(),
         'num_products': num_products,
+        'num_varients': num_varients,
         'num_varients_available': num_varients_available,
     }
 

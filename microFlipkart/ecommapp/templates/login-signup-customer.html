@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Login Signup</title>
+</head>
+<body>
+{% if error %}
+
+    <h3 >ERROR: {{ error }}</h3>
+{% endif %}
+<center>
+    <h1>Customer Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>Enter Mobile Number: </p><input type="text" name="mobile" id="mobile"><button>GET OTP</button><br>
+        <p>Enter OTP: </p><input type="password" name="otp" id="otp"><br>
+        <input type="hidden" name="REQ" value="Login" id="REQ">
+        <input type="submit" value="Login Now">
+    </form>
+<hr>
+    <br>
+      <h1> Customer Signup</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>Enter Mobile Number: </p><input type="text" name="mobile" id="mobile"><br>
+        <p>Enter Email Address: </p><input type="email" name="email" id="email"><br>
+        <p>Enter Password: </p><input type="password" name="pass" id="pass"><br>
+                <input type="submit" value="Sign up">
+
+    </form>
+<a href="/cust/logout/" >Logout</a>
+</center>
+</body>
+</html>
